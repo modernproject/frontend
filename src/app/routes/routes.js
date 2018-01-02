@@ -1,8 +1,7 @@
-import IndexContainer from '../containers/IndexContainer'
+import DashboardContainer from '../containers/DashboardContainer'
 import AboutContainer from '../containers/AboutContainer'
 import LoginContainer from '../containers/LoginContainer'
 import RegistrationContainer from '../containers/RegistrationContainer'
-import DashboardContainer from '../containers/DashboardContainer'
 import SettingsContainer from '../containers/SettingsContainer'
 import UserFormComponent from '../components/UserFormComponent'
 
@@ -13,7 +12,7 @@ export const routes = [
   {
     path: '/',
     exact: true,
-    Component: IndexContainer,
+    Component: DashboardContainer,
     Layout: NavBarLayout
   },
   {

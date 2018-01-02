@@ -9,7 +9,6 @@ const NavBar = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    grid-column-end: span 2;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 `
