@@ -4,11 +4,15 @@ import { connect } from 'react-redux'
 import GridContainer from '../styled_components/GridContainer'
 import NavBarContainer from '../containers/NavBarContainer'
 import MainContainer from '../styled_components/MainContainer'
+import { getUserAction } from '../actions'
 
 class NavBarLayout extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.object.isRequired
+  }
+  componentDidMount() {
+    this.props.dispatch(getUserAction())
   }
   render() {
     const { children } = this.props

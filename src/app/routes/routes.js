@@ -8,14 +8,13 @@ import UserFormComponent from '../components/UserFormComponent'
 
 import NavBarLayout from '../layouts/NavBarLayout'
 import NavBarFooterLayout from '../layouts/NavBarFooterLayout'
-import NavBarSideBarLayout from '../layouts/NavBarSideBarLayout'
 
 export const routes = [
   {
     path: '/',
     exact: true,
     Component: IndexContainer,
-    Layout: NavBarSideBarLayout
+    Layout: NavBarLayout
   },
   {
     path: '/about',
@@ -39,12 +38,12 @@ export const routes = [
     path: '/settings',
     exact: true,
     Component: SettingsContainer,
-    Layout: NavBarSideBarLayout
+    Layout: NavBarLayout
   },
   {
     path: '/settings/user',
     exact: true,
     Component: UserFormComponent,
-    Layout: NavBarSideBarLayout
+    Layout: NavBarLayout
   }
 ]

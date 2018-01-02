@@ -6,7 +6,6 @@ import RegistrationButton from './RegistrationButton'
 import LogoButton from './LogoButton'
 import Button from '../styled_components/Button'
 import NavBarDropdownContainer from '../containers/NavBarDropdownContainer'
-import ToggleButtonContainer from '../containers/ToggleButtonContainer'
 
 export default class NavBarComponent extends React.Component {
     static propTypes = {
@@ -17,10 +16,7 @@ export default class NavBarComponent extends React.Component {
         const { user } = this.props
         return (
             <NavBar>
-                <div>
-                    <ToggleButtonContainer />
-                    <LogoButton />
-                </div>
+                <LogoButton />
                 {Object.keys(user).length > 0 ? (
                     <NavBarDropdownContainer user={user} />
                 ) : (

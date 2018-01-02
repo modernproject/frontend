@@ -24,7 +24,6 @@ export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
 export const LOGOUT_REQUEST_SUCCESS = 'LOGOUT_REQUEST_SUCCESS'
 export const LOGOUT_REQUEST_ERROR = 'LOGOUT_REQUEST_ERROR'
 
-export const UPDATE_SIDEBAR = 'UPDATE_SIDEBAR'
 export const UPDATE_DROPDOWN = 'UPDATE_DROPDOWN'
 
 // URL CONSTANTS
@@ -84,12 +83,6 @@ export function verifyJWT() {
           }
         })
     }
-  }
-}
-
-export function updateSideBar() {
-  return {
-    type: UPDATE_SIDEBAR
   }
 }
 
