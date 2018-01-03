@@ -6,6 +6,8 @@ import RegistrationContainer from '../containers/RegistrationContainer'
 import SettingsContainer from '../containers/SettingsContainer'
 import UserFormComponent from '../components/UserFormComponent'
 
+import EmailConfirmationContainer from '../containers/EmailConfirmationContainer'
+
 import NavBarLayout from '../layouts/NavBarLayout'
 import NavBarFooterLayout from '../layouts/NavBarFooterLayout'
 
@@ -47,9 +49,21 @@ export const routes = [
     Layout: NavBarLayout
   },
   {
+    path: '/settings/email_preferences',
+    exact: true,
+    Component: UserFormComponent,
+    Layout: NavBarLayout
+  },
+  {
     path: '/article/:articleSlug',
     exact: true,
     Component: ArticleContainer,
+    Layout: NavBarLayout
+  },
+  {
+    path: '/registration/account-confirm-email/:key',
+    exact: true,
+    Component: EmailConfirmationContainer,
     Layout: NavBarLayout
   }
 ]

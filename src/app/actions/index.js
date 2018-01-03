@@ -28,6 +28,12 @@ export const POSTS_REQUEST = 'POSTS_REQUEST'
 export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS'
 export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR'
 
+export const EMAIL_CONFIRMATION_REQUEST = 'EMAIL_CONFIRMATION_REQUEST'
+export const EMAIL_CONFIRMATION_REQUEST_SUCCESS =
+  'EMAIL_CONFIRMATION_REQUEST_SUCCESS'
+export const EMAIL_CONFIRMATION_REQUEST_ERROR =
+  'EMAIL_CONFIRMATION_REQUEST_ERROR'
+
 export const UPDATE_DROPDOWN = 'UPDATE_DROPDOWN'
 
 // URL CONSTANTS
@@ -37,6 +43,7 @@ const REGISTRATION_URL = 'registration/'
 const USER_URL = 'user/'
 const VERIFY_JWT_URL = 'verify_token/'
 const POSTS_URL = 'posts/'
+const EMAIL_CONFIRMATION_URL = `${REGISTRATION_URL}verify-email/`
 
 // URL CONSTANTS
 const BASE_URL =
@@ -323,6 +330,43 @@ export function postsRequest() {
       })
       .catch(error => {
         dispatch(postsRequestError()).then(() => {
+          dispatch(updateErrors(error.response.status, error.response.data))
+        })
+      })
+  }
+}
+
+export function emailConfirmationRequest() {
+  return {
+    type: EMAIL_CONFIRMATION_REQUEST
+  }
+}
+
+export function emailConfirmationRequestSuccess(data) {
+  return {
+    type: EMAIL_CONFIRMATION_REQUEST_SUCCESS
+  }
+}
+
+export function emailConfirmationRequestError() {
+  return {
+    type: EMAIL_CONFIRMATION_REQUEST_ERROR
+  }
+}
+
+export function emailConfirmationAction(key) {
+  return (dispatch, getState) => {
+    dispatch(emailConfirmationRequest())
+    const data = {
+      key: key
+    }
+    axios
+      .post(EMAIL_CONFIRMATION_URL, data)
+      .then(response => {
+        dispatch(emailConfirmationRequestSuccess())
+      })
+      .catch(error => {
+        dispatch(emailConfirmationRequestError()).then(() => {
           dispatch(updateErrors(error.response.status, error.response.data))
         })
       })
