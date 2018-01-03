@@ -24,6 +24,10 @@ export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
 export const LOGOUT_REQUEST_SUCCESS = 'LOGOUT_REQUEST_SUCCESS'
 export const LOGOUT_REQUEST_ERROR = 'LOGOUT_REQUEST_ERROR'
 
+export const POSTS_REQUEST = 'POSTS_REQUEST'
+export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS'
+export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR'
+
 export const UPDATE_DROPDOWN = 'UPDATE_DROPDOWN'
 
 // URL CONSTANTS
@@ -32,6 +36,7 @@ const LOGOUT_URL = 'logout/'
 const REGISTRATION_URL = 'registration/'
 const USER_URL = 'user/'
 const VERIFY_JWT_URL = 'verify_token/'
+const POSTS_URL = 'posts/'
 
 // URL CONSTANTS
 const BASE_URL =
@@ -293,5 +298,33 @@ export function getUserAction() {
           })
       }
     })
+  }
+}
+
+export function postsRequestSuccess(data) {
+  return {
+    type: POSTS_REQUEST_SUCCESS,
+    data: data
+  }
+}
+
+export function postsRequestError() {
+  return {
+    type: POSTS_REQUEST_ERROR
+  }
+}
+
+export function postsRequest() {
+  return (dispatch, getState) => {
+    axios
+      .get(POSTS_URL)
+      .then(response => {
+        dispatch(postsRequestSuccess(response.data))
+      })
+      .catch(error => {
+        dispatch(postsRequestError()).then(() => {
+          dispatch(updateErrors(error.response.status, error.response.data))
+        })
+      })
   }
 }

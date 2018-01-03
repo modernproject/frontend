@@ -1,5 +1,6 @@
 import DashboardContainer from '../containers/DashboardContainer'
 import AboutContainer from '../containers/AboutContainer'
+import ArticleContainer from '../containers/ArticleContainer'
 import LoginContainer from '../containers/LoginContainer'
 import RegistrationContainer from '../containers/RegistrationContainer'
 import SettingsContainer from '../containers/SettingsContainer'
@@ -43,6 +44,12 @@ export const routes = [
     path: '/settings/user',
     exact: true,
     Component: UserFormComponent,
+    Layout: NavBarLayout
+  },
+  {
+    path: '/article/:articleSlug',
+    exact: true,
+    Component: ArticleContainer,
     Layout: NavBarLayout
   }
 ]
