@@ -5,8 +5,9 @@ import LoginContainer from '../containers/LoginContainer'
 import RegistrationContainer from '../containers/RegistrationContainer'
 import SettingsContainer from '../containers/SettingsContainer'
 import UserFormComponent from '../components/UserFormComponent'
-
 import EmailConfirmationContainer from '../containers/EmailConfirmationContainer'
+import PasswordResetContainer from '../containers/PasswordResetContainer'
+import PasswordUpdateContainer from '../containers/PasswordUpdateContainer'
 
 import NavBarLayout from '../layouts/NavBarLayout'
 import NavBarFooterLayout from '../layouts/NavBarFooterLayout'
@@ -37,7 +38,7 @@ export const routes = [
     Layout: NavBarLayout
   },
   {
-    path: '/settings',
+    path: '/settings/',
     exact: true,
     Component: SettingsContainer,
     Layout: NavBarLayout
@@ -46,6 +47,12 @@ export const routes = [
     path: '/settings/user',
     exact: true,
     Component: UserFormComponent,
+    Layout: NavBarLayout
+  },
+  {
+    path: '/settings/password',
+    exact: true,
+    Component: PasswordUpdateContainer,
     Layout: NavBarLayout
   },
   {
@@ -64,6 +71,12 @@ export const routes = [
     path: '/registration/account-confirm-email/:key',
     exact: true,
     Component: EmailConfirmationContainer,
+    Layout: NavBarLayout
+  },
+  {
+    path: '/password-reset/confirm/:uid/:token',
+    exact: true,
+    Component: PasswordResetContainer,
     Layout: NavBarLayout
   }
 ]

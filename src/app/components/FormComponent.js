@@ -47,33 +47,41 @@ class FormComponent extends React.Component {
     const { formBuilder, inputErrors, fields } = this.props
     const inputs = Object.keys(fields)
     const errorKeys = Object.keys(inputErrors)
+
     return inputs.map(input => {
-      const type = input.includes('password') ? 'password' : fields[input].type
-      const fieldErrorsPresent = errorKeys.indexOf(input) !== -1
-      return (
-        <FieldGroup key={input}>
-          {(this.state.focused === input || fields[input].value !== '') && (
-            <Label htmlFor={input}>{`${fields[input].label} `}</Label>
-          )}
-          <Input
-            id={input}
-            type={type}
-            placeholder={
-              this.state.focused === input ? '' : fields[input].label
-            }
-            onChange={this.handleChange}
-            onFocus={() => {
-              this.setState({ focused: input })
-            }}
-            onBlur={() => {
-              this.setState({ focused: '' })
-            }}
-            defaultValue={fields[input].value}
-            error={fieldErrorsPresent}
-          />
-          {fieldErrorsPresent && this.renderFieldErrors(input, inputErrors)}
-        </FieldGroup>
-      )
+      if (
+        formBuilder.noDisplayFields === undefined ||
+        formBuilder.noDisplayFields.indexOf(input) === -1
+      ) {
+        const type = input.includes('password')
+          ? 'password'
+          : fields[input].type
+        const fieldErrorsPresent = errorKeys.indexOf(input) !== -1
+        return (
+          <FieldGroup key={input}>
+            {(this.state.focused === input || fields[input].value !== '') && (
+              <Label htmlFor={input}>{`${fields[input].label} `}</Label>
+            )}
+            <Input
+              id={input}
+              type={type}
+              placeholder={
+                this.state.focused === input ? '' : fields[input].label
+              }
+              onChange={this.handleChange}
+              onFocus={() => {
+                this.setState({ focused: input })
+              }}
+              onBlur={() => {
+                this.setState({ focused: '' })
+              }}
+              defaultValue={fields[input].value}
+              error={fieldErrorsPresent}
+            />
+            {fieldErrorsPresent && this.renderFieldErrors(input, inputErrors)}
+          </FieldGroup>
+        )
+      }
     })
   }
 

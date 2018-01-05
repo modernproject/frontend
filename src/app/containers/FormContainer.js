@@ -27,6 +27,9 @@ class FormContainer extends React.Component {
     Object.keys(this.fields).map(field => {
       values[field] = this.fields[field].value
     })
+    if (this.props.formBuilder.values) {
+      values = Object.assign(values, this.props.formBuilder.values)
+    }
     this.props.dispatch(clearErrors()).then(() => {
       this.props.dispatch(this.props.formBuilder.action(values))
     })

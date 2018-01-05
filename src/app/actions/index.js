@@ -34,6 +34,20 @@ export const EMAIL_CONFIRMATION_REQUEST_SUCCESS =
 export const EMAIL_CONFIRMATION_REQUEST_ERROR =
   'EMAIL_CONFIRMATION_REQUEST_ERROR'
 
+export const PASSWORD_UPDATE_REQUEST = 'PASSWORD_UPDATE_REQUEST'
+export const PASSWORD_UPDATE_REQUEST_SUCCESS = 'PASSWORD_UPDATE_REQUEST_SUCCESS'
+export const PASSWORD_UPDATE_REQUEST_ERROR = 'PASSWORD_UPDATE_REQUEST_ERROR'
+
+export const PASSWORD_RESET_REQUEST = 'PASSWORD_RESET_REQUEST'
+export const PASSWORD_RESET_REQUEST_SUCCESS = 'PASSWORD_RESET_REQUEST_SUCCESS'
+export const PASSWORD_RESET_REQUEST_ERROR = 'PASSWORD_RESET_REQUEST_ERROR'
+
+export const PASSWORD_RESET_CONFIRM_REQUEST = 'PASSWORD_RESET_CONFIRM_REQUEST'
+export const PASSWORD_RESET_CONFIRM_REQUEST_SUCCESS =
+  'PASSWORD_RESET_CONFIRM_REQUEST_SUCCESS'
+export const PASSWORD_RESET_CONFIRM_REQUEST_ERROR =
+  'PASSWORD_RESET_CONFIRM_REQUEST_ERROR'
+
 export const UPDATE_DROPDOWN = 'UPDATE_DROPDOWN'
 
 // URL CONSTANTS
@@ -44,6 +58,9 @@ const USER_URL = 'user/'
 const VERIFY_JWT_URL = 'verify_token/'
 const POSTS_URL = 'posts/'
 const EMAIL_CONFIRMATION_URL = `${REGISTRATION_URL}verify-email/`
+const PASSWORD_UPDATE_URL = 'password/change/'
+const PASSWORD_RESET_URL = 'password/reset/'
+const PASSWORD_RESET_CONFIRM_URL = 'password/reset/confirm/'
 
 // URL CONSTANTS
 const BASE_URL =
@@ -367,6 +384,108 @@ export function emailConfirmationAction(key) {
       })
       .catch(error => {
         dispatch(emailConfirmationRequestError()).then(() => {
+          dispatch(updateErrors(error.response.status, error.response.data))
+        })
+      })
+  }
+}
+
+export function passwordUpdatetRequest() {
+  return {
+    type: PASSWORD_UPDATE_REQUEST
+  }
+}
+
+export function passwordUpdateRequestSuccess(data) {
+  return {
+    type: PASSWORD_UPDATE_REQUEST_SUCCESS
+  }
+}
+
+export function passwordUpdateRequestError() {
+  return {
+    type: PASSWORD_UPDATE_REQUEST_ERROR
+  }
+}
+
+export function passwordUpdateAction(data) {
+  return (dispatch, getState) => {
+    dispatch(passwordUpdatetRequest())
+    axios
+      .post(PASSWORD_UPDATE_URL, data)
+      .then(response => {
+        dispatch(passwordUpdateRequestSuccess())
+      })
+      .catch(error => {
+        dispatch(passwordUpdateRequestError()).then(() => {
+          dispatch(updateErrors(error.response.status, error.response.data))
+        })
+      })
+  }
+}
+
+export function passwordResetRequest() {
+  return {
+    type: PASSWORD_RESET_REQUEST
+  }
+}
+
+export function passwordResetRequestSuccess(data) {
+  return {
+    type: PASSWORD_RESET_REQUEST_SUCCESS
+  }
+}
+
+export function passwordResetRequestError() {
+  return {
+    type: PASSWORD_RESET_REQUEST_ERROR
+  }
+}
+
+export function passwordResetAction(data) {
+  return (dispatch, getState) => {
+    dispatch(passwordResetRequest())
+    axios
+      .post(PASSWORD_RESET_URL, data)
+      .then(response => {
+        dispatch(passwordResetRequestSuccess())
+      })
+      .catch(error => {
+        dispatch(passwordResetRequestError()).then(() => {
+          dispatch(updateErrors(error.response.status, error.response.data))
+        })
+      })
+  }
+}
+
+export function passwordResetConfirmRequest() {
+  return {
+    type: PASSWORD_RESET_CONFIRM_REQUEST
+  }
+}
+
+export function passwordResetRequestConfirmSuccess(data) {
+  return {
+    type: PASSWORD_RESET_CONFIRM_REQUEST_SUCCESS
+  }
+}
+
+export function passwordResetConfirmRequestError() {
+  return {
+    type: PASSWORD_RESET_CONFIRM_REQUEST_ERROR
+  }
+}
+
+export function passwordResetConfirmAction(data) {
+  return (dispatch, getState) => {
+    dispatch(passwordResetConfirmRequest())
+    axios
+      .post(PASSWORD_RESET_CONFIRM_URL, data)
+      .then(response => {
+        dispatch(passwordResetRequestConfirmSuccess())
+      })
+      .catch(error => {
+        dispatch(passwordResetConfirmRequestError()).then(() => {
           dispatch(updateErrors(error.response.status, error.response.data))
         })
       })

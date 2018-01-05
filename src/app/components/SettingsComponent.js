@@ -17,6 +17,14 @@ export default class SettingsComponent extends React.Component {
                 </Button>
                 <Button full>Email Preferences</Button>
                 <Button full>Payment Info</Button>
+                <Button
+                    full
+                    onClick={() => {
+                        this.props.handleClickRoute('password')
+                    }}
+                >
+                    Password Settings
+                </Button>
             </Container>
         )
     }
