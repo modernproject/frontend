@@ -326,7 +326,7 @@ export function userUpdateAction(data) {
 export function getUserAction(location = '') {
   return (dispatch, getState) => {
     dispatch(verifyJWT(location)).then(verfied => {
-      if (verfied) {
+      if (verfied && Object.keys(getState().user).length === 0) {
         dispatch(userRequest())
         axios
           .get(USER_URL)

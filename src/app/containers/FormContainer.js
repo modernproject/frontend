@@ -41,7 +41,6 @@ class FormContainer extends React.Component {
   componentDidMount = () => {
     this.props.dispatch(clearErrors())
     this.buildFields()
-    this.setState({ loading: false })
   }
 
   buildFields = () => {
@@ -72,6 +71,7 @@ class FormContainer extends React.Component {
         if (Object.keys(this.props.formBuilder).indexOf('description') === -1) {
           this.setState({ description: options.description })
         }
+        this.setState({ loading: false })
       }
     })
   }

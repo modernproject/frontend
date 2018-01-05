@@ -9,18 +9,25 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export default class NavBarComponent extends React.Component {
     static propTypes = {
-        user: PropTypes.object.isRequired
+        user: PropTypes.object.isRequired,
+        displayDropDown: PropTypes.bool.isRequired
     }
 
     render() {
-        const { user } = this.props
+        const { user, displayDropDown } = this.props
         return (
             <NavBar>
                 <LogoButton />
                 {Object.keys(user).length > 0 ? (
-                    <Button onClick={this.props.handleOnClick}>
-                        <FontAwesomeIcon icon="chevron-down" />
-                    </Button>
+                    displayDropDown ? (
+                        <Button onClick={this.props.handleOnClick}>
+                            <FontAwesomeIcon icon="chevron-up" />
+                        </Button>
+                    ) : (
+                        <Button onClick={this.props.handleOnClick}>
+                            <FontAwesomeIcon icon="chevron-down" />
+                        </Button>
+                    )
                 ) : (
                     <div>
                         <RegistrationButton key={'registration'} />,
