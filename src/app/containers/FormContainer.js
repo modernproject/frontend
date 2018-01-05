@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import FormComponent from '../components/FormComponent'
-import BackButtonContainer from '../containers/BackButtonContainer'
 import { clearErrors, obtainFormOptions } from '../actions'
 
 class FormContainer extends React.Component {
@@ -83,16 +82,13 @@ class FormContainer extends React.Component {
       return null
     } else {
       return (
-        <div>
-          <BackButtonContainer />
-          <FormComponent
-            handleSubmit={this.handleSubmit}
-            handleChange={this.handleChange}
-            fields={this.fields}
-            {...this.state}
-            {...this.props}
-          />
-        </div>
+        <FormComponent
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          fields={this.fields}
+          {...this.state}
+          {...this.props}
+        />
       )
     }
   }

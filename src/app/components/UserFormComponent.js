@@ -1,6 +1,7 @@
 import React from 'react'
-import FormContainer from '../containers/FormContainer'
 import { userUpdateAction } from '../actions'
+import FormContainer from '../containers/FormContainer'
+import BackButtonContainer from '../containers/BackButtonContainer'
 
 class UserFormComponent extends React.Component {
     formBuilder = {
@@ -17,7 +18,12 @@ class UserFormComponent extends React.Component {
     }
 
     render() {
-        return <FormContainer formBuilder={this.formBuilder} />
+        return (
+            <div>
+                <BackButtonContainer />
+                <FormContainer formBuilder={this.formBuilder} />
+            </div>
+        )
     }
 }
 

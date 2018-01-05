@@ -16,7 +16,8 @@ export default class PasswordUpdateComponent extends React.Component {
         uri: 'password/reset/',
         method: 'POST',
         action: passwordResetAction,
-        button: { text: 'CONFIRM' },
+        button: { text: 'RESET PASSWORD' },
+        name: '',
         description: '',
         values: {
             email: this.props.email
@@ -27,6 +28,7 @@ export default class PasswordUpdateComponent extends React.Component {
     render() {
         return (
             <div>
+                <BackButtonContainer />
                 <FormContainer formBuilder={this.passwordUpdateformBuilder} />
                 <FormContainer formBuilder={this.passwordResetformBuilder} />
             </div>
