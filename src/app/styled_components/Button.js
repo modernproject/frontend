@@ -15,6 +15,18 @@ const Button = styled.button`
     }
 
     ${props =>
+        props.back &&
+        `
+            margin-right: 2rem;
+
+    @media (max-width: ${props => props.theme.mediaQueries.phone}) {
+            margin-right: 1rem;
+        
+    }
+
+        `};
+
+    ${props =>
         props.confirm &&
         `
             background: blue;
@@ -25,7 +37,7 @@ const Button = styled.button`
     ${props =>
         props.icon &&
         `
-            svg {
+            svg:first-child {
                 padding-right: 1rem;    
             }
         `};

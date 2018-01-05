@@ -4,8 +4,7 @@ import styled from 'styled-components'
 const FieldSet = styled.fieldset`
     display: flex;
     flex-direction: column;
-    align-content: center;
-    align-items: center;
+
     border: none;
     padding: 0;
     margin: 0;

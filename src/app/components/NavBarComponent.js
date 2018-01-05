@@ -20,11 +20,13 @@ class NavBarComponent extends React.Component {
                 <LogoButton />
                 {Object.keys(user).length > 0 ? (
                     displayDropDown ? (
-                        <Button onClick={this.props.handleOnClick}>
+                        <Button icon="true" onClick={this.props.handleOnClick}>
+                            <FontAwesomeIcon icon="user-circle" />
                             <FontAwesomeIcon icon="chevron-up" />
                         </Button>
                     ) : (
-                        <Button onClick={this.props.handleOnClick}>
+                        <Button icon="true" onClick={this.props.handleOnClick}>
+                            <FontAwesomeIcon icon="user-circle" />
                             <FontAwesomeIcon icon="chevron-down" />
                         </Button>
                     )
