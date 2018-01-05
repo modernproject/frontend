@@ -8,7 +8,8 @@ class UserFormComponent extends React.Component {
         method: 'PUT',
         action: userUpdateAction,
         button: { text: 'UPDATE' },
-        description: ''
+        description: '',
+        noDisplayFields: ['pk', 'email', 'username']
     }
 
     render() {

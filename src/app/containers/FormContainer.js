@@ -56,9 +56,6 @@ class FormContainer extends React.Component {
     obtainOptions().then(options => {
       if (options !== undefined) {
         let fields = options.actions[this.props.formBuilder.method]
-        if (Object.keys(fields).every(field => ['username', 'email'])) {
-          delete fields['username']
-        }
         Object.keys(fields).map(field => {
           fields[field].value = ''
         })

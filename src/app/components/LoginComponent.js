@@ -8,7 +8,8 @@ class LoginComponent extends React.Component {
         method: 'POST',
         action: loginAction,
         button: { text: 'LOGIN' },
-        description: ''
+        description: '',
+        noDisplayFields: ['username']
     }
 
     render() {

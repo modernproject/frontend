@@ -306,12 +306,13 @@ export function userClear() {
   }
 }
 
-export function userUpdateAction() {
+export function userUpdateAction(data) {
   return (dispatch, getState) => {
+    dispatch(userRequest())
     axios
-      .post(USER_URL, data)
+      .patch(USER_URL, data)
       .then(response => {
-        console.log('test')
+        dispatch(userRequestSuccess(response.data))
       })
       .catch(error => {
         dispatch(userRequestError()).then(() => {
