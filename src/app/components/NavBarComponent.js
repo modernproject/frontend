@@ -7,7 +7,7 @@ import LogoButton from './LogoButton'
 import Button from '../styled_components/Button'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
-export default class NavBarComponent extends React.Component {
+class NavBarComponent extends React.Component {
     static propTypes = {
         user: PropTypes.object.isRequired,
         displayDropDown: PropTypes.bool.isRequired
@@ -38,3 +38,5 @@ export default class NavBarComponent extends React.Component {
         )
     }
 }
+
+export default NavBarComponent

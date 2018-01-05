@@ -10,16 +10,18 @@ class NavBarDropdownContainer extends React.Component {
         displayDropDown: PropTypes.bool.isRequired
     }
 
-    handleOnClick = () => {
-        this.props.dispatch(updateDropDown())
-    }
-
     handleOnClickSignOut = () => {
+        this.props.dispatch(updateDropDown())
         this.props.dispatch(logoutAction())
     }
 
     handleClickRoute = uri => {
+        this.props.dispatch(updateDropDown())
         this.props.dispatch(push(uri))
+    }
+
+    handleClickOutside = event => {
+        this.props.dispatch(updateDropDown())
     }
 
     render() {
@@ -27,6 +29,7 @@ class NavBarDropdownContainer extends React.Component {
             <NavBarDropdownComponent
                 handleOnClickSignOut={this.handleOnClickSignOut}
                 handleClickRoute={this.handleClickRoute}
+                handleClickOutside={this.handleClickOutside}
                 {...this.props}
             />
         )

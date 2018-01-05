@@ -2,8 +2,13 @@ import React from 'react'
 import Button from '../styled_components/Button'
 import NavBarDropdownContent from '../styled_components/NavBarDropdownContent'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import onClickOutside from 'react-onclickoutside'
 
 class NavBarDropdownComponent extends React.Component {
+    handleClickOutside = event => {
+        this.props.handleClickOutside(event)
+    }
+
     render() {
         return (
             this.props.displayDropDown && (
@@ -32,4 +37,4 @@ class NavBarDropdownComponent extends React.Component {
     }
 }
 
-export default NavBarDropdownComponent
+export default onClickOutside(NavBarDropdownComponent)

@@ -222,7 +222,7 @@ export function logoutRequestError() {
   }
 }
 
-export function logoutAction(data) {
+export function logoutAction() {
   return (dispatch, getState) => {
     dispatch(loginRequest())
     axios
@@ -465,7 +465,9 @@ export function passwordResetAction(data) {
     axios
       .post(PASSWORD_RESET_URL, data)
       .then(response => {
-        dispatch(passwordResetRequestSuccess())
+        dispatch(passwordResetRequestSuccess()).then(() => {
+          dispatch(logoutAction())
+        })
       })
       .catch(error => {
         dispatch(passwordResetRequestError()).then(() => {
