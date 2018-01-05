@@ -11,9 +11,11 @@ class NavBarLayout extends React.Component {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.object.isRequired
   }
+
   componentDidMount() {
-    this.props.dispatch(getUserAction())
+    this.props.dispatch(getUserAction(this.props.location.pathname))
   }
+
   render() {
     const { children } = this.props
     return (

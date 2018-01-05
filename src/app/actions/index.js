@@ -70,6 +70,26 @@ var axios = axiosBase.create({
   baseURL: BASE_URL
 })
 
+function globalErrorHandler(error, dispatch, location = '') {
+  if (error.response.data.non_field_errors || error.response.data.detail) {
+    const errorMessage = error.response.data.detail
+      ? error.response.data.detail
+      : error.response.data.non_field_errors[0]
+    if (
+      errorMessage === 'Signature has expired.' ||
+      errorMessage === 'Authentication credentials were not provided.'
+    ) {
+      if (location !== 'dashboard') {
+        dispatch(push('/login'))
+      }
+    } else {
+      console.error(error)
+    }
+  } else {
+    console.error(error)
+  }
+}
+
 function setJWTCookie(token) {
   Cookies.set('token', token)
 }
@@ -91,7 +111,7 @@ function removeJWTFromAxios() {
   delete axios.defaults.headers.common['Authorization']
 }
 
-export function verifyJWT() {
+export function verifyJWT(location = '') {
   return (dispatch, getState) => {
     const token = Cookies.get('token')
     if (token !== '' && typeof token !== 'undefined') {
@@ -104,12 +124,7 @@ export function verifyJWT() {
           return true
         })
         .catch(error => {
-          if (
-            !error.response.data.non_field_errors[0] ===
-            'Signature has expired.'
-          ) {
-            console.error(error)
-          }
+          globalErrorHandler(error, dispatch, location)
         })
     }
   }
@@ -121,7 +136,7 @@ export function updateDropDown() {
   }
 }
 
-export async function obtainFormOptions(uri) {
+export async function obtainFormOptions(uri, dispatch) {
   try {
     if (uri.slice(-1) !== '/') {
       uri = uri + '/'
@@ -133,7 +148,7 @@ export async function obtainFormOptions(uri) {
         return response.data
       })
       .catch(error => {
-        console.error(error)
+        globalErrorHandler(error, dispatch)
       })
     return options
   } catch (error) {
@@ -306,9 +321,9 @@ export function userUpdateAction() {
   }
 }
 
-export function getUserAction() {
+export function getUserAction(location = '') {
   return (dispatch, getState) => {
-    dispatch(verifyJWT()).then(verfied => {
+    dispatch(verifyJWT(location)).then(verfied => {
       if (verfied) {
         dispatch(userRequest())
         axios

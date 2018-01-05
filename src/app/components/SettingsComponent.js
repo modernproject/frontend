@@ -15,8 +15,6 @@ export default class SettingsComponent extends React.Component {
                 >
                     User Settings
                 </Button>
-                <Button full>Email Preferences</Button>
-                <Button full>Payment Info</Button>
                 <Button
                     full
                     onClick={() => {

@@ -42,32 +42,36 @@ class FormContainer extends React.Component {
   componentDidMount = () => {
     this.props.dispatch(clearErrors())
     this.buildFields()
+    this.setState({ loading: false })
   }
 
   buildFields = () => {
     let obtainOptions = async () => {
-      let options = await obtainFormOptions(this.props.formBuilder.uri)
+      let options = await obtainFormOptions(
+        this.props.formBuilder.uri,
+        this.props.dispatch
+      )
       return options
     }
     obtainOptions().then(options => {
-      let fields = options.actions[this.props.formBuilder.method]
-      if (Object.keys(fields).every(field => ['username', 'email'])) {
-        delete fields['username']
-      }
-      Object.keys(fields).map(field => {
-        fields[field].value = ''
-      })
+      if (options !== undefined) {
+        let fields = options.actions[this.props.formBuilder.method]
+        if (Object.keys(fields).every(field => ['username', 'email'])) {
+          delete fields['username']
+        }
+        Object.keys(fields).map(field => {
+          fields[field].value = ''
+        })
 
-      this.fields = fields
+        this.fields = fields
 
-      if (Object.keys(this.props.formBuilder).indexOf('name') === -1) {
-        this.setState({ name: options.name })
+        if (Object.keys(this.props.formBuilder).indexOf('name') === -1) {
+          this.setState({ name: options.name })
+        }
+        if (Object.keys(this.props.formBuilder).indexOf('description') === -1) {
+          this.setState({ description: options.description })
+        }
       }
-      if (Object.keys(this.props.formBuilder).indexOf('description') === -1) {
-        this.setState({ description: options.description })
-      }
-
-      this.setState({ loading: false })
     })
   }
 
