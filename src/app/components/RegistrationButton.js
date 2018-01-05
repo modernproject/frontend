@@ -9,7 +9,7 @@ class RegistrationButton extends React.Component {
         dispatch(push('/signup'))
     }
     render() {
-        return <Button onClick={this.handleClick}>SIGN UP</Button>
+        return <Button onClick={this.handleClick}>Sign Up</Button>
     }
 }
 

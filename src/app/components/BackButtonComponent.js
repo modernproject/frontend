@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../styled_components/Button'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export default class BackButtonComponent extends React.Component {
     render() {
@@ -9,7 +10,7 @@ export default class BackButtonComponent extends React.Component {
                     this.props.handleClick()
                 }}
             >
-                BACK
+                <FontAwesomeIcon icon="chevron-left" />
             </Button>
         )
     }

@@ -36,7 +36,6 @@ class FormContainer extends React.Component {
 
   handleChange = (name, value) => {
     this.fields[name].value = value
-    console.log(value)
   }
 
   componentDidMount = () => {

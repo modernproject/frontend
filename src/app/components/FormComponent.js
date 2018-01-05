@@ -92,7 +92,7 @@ class FormComponent extends React.Component {
           {this.props.name && <p>{this.props.name.toUpperCase()}</p>}
           {this.props.description !== '' && <p>{this.props.description}</p>}
           {this.renderInputs()}
-          <Button>{this.props.formBuilder.button.text}</Button>
+          <Button confirm="true">{this.props.formBuilder.button.text}</Button>
           {this.renderNonFieldErrors()}
         </FieldSet>
       </form>

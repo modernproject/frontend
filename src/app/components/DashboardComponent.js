@@ -18,6 +18,7 @@ export default class DashboardComponent extends React.Component {
                             this.props.handleClick(post.slug)
                         }}
                         key={post}
+                        full="true"
                     >
                         {post.title}
                     </Button>

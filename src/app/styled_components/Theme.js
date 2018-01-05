@@ -13,8 +13,17 @@ const colors = {
   black: '#000000'
 }
 
+const mediaQueries = {
+  phone: '37.5rem', //600px
+  tabletPortrait: '37.5rem', //600px
+  tabletLandscape: '56.25rem', //900px
+  desktop: '75rem', //1200px
+  desktopLarge: '112.5rem' //1800px
+}
+
 const Theme = {
   colors: colors,
+  mediaQueries: mediaQueries,
   NavBar: {
     backgroundColor: colors.white,
     color: colors.white

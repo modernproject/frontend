@@ -15,10 +15,19 @@ const Button = styled.button`
     }
 
     ${props =>
-        props.form &&
+        props.confirm &&
         `
             background: blue;
             color: white;
+            width: 100%;
+        `};
+
+    ${props =>
+        props.icon &&
+        `
+            svg {
+                padding-right: 1rem;    
+            }
         `};
 
     ${props =>

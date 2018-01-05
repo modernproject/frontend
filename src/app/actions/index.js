@@ -230,6 +230,7 @@ export function logoutAction(data) {
       .then(response => {
         removeJWTCookie()
         removeJWTFromAxios()
+        dispatch(updateDropDown())
         dispatch(userClear()).then(() => {
           dispatch(push('/'))
         })

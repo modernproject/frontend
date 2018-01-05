@@ -9,7 +9,7 @@ class LoginButton extends React.Component {
         dispatch(push('/login'))
     }
     render() {
-        return <Button onClick={this.handleClick}>LOGIN</Button>
+        return <Button onClick={this.handleClick}>Login</Button>
     }
 }
 
