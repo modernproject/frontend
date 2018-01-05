@@ -5,6 +5,7 @@ import GridContainer from '../styled_components/GridContainer'
 import NavBarContainer from '../containers/NavBarContainer'
 import MainContainer from '../styled_components/MainContainer'
 import { getUserAction } from '../actions'
+import NavBarDropdownContainer from '../containers/NavBarDropdownContainer'
 
 class NavBarLayout extends React.Component {
   static propTypes = {
@@ -21,6 +22,7 @@ class NavBarLayout extends React.Component {
     return (
       <GridContainer>
         <NavBarContainer />
+        <NavBarDropdownContainer />
         <MainContainer full>{children}</MainContainer>
       </GridContainer>
     )

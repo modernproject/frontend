@@ -11,5 +11,6 @@ const NavBar = styled.div`
     justify-content: space-between;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    grid-column: 1 / span 2;
 `
 export default NavBar

@@ -5,7 +5,7 @@ import LoginButton from './LoginButton'
 import RegistrationButton from './RegistrationButton'
 import LogoButton from './LogoButton'
 import Button from '../styled_components/Button'
-import NavBarDropdownContainer from '../containers/NavBarDropdownContainer'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export default class NavBarComponent extends React.Component {
     static propTypes = {
@@ -18,7 +18,9 @@ export default class NavBarComponent extends React.Component {
             <NavBar>
                 <LogoButton />
                 {Object.keys(user).length > 0 ? (
-                    <NavBarDropdownContainer user={user} />
+                    <Button onClick={this.props.handleOnClick}>
+                        <FontAwesomeIcon icon="chevron-down" />
+                    </Button>
                 ) : (
                     <div>
                         <RegistrationButton key={'registration'} />,

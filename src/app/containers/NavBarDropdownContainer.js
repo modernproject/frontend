@@ -7,7 +7,6 @@ import { push } from 'react-router-redux'
 
 class NavBarDropdownContainer extends React.Component {
     static propTypes = {
-        user: PropTypes.object.isRequired,
         displayDropDown: PropTypes.bool.isRequired
     }
 
@@ -26,7 +25,6 @@ class NavBarDropdownContainer extends React.Component {
     render() {
         return (
             <NavBarDropdownComponent
-                handleOnClick={this.handleOnClick}
                 handleOnClickSignOut={this.handleOnClickSignOut}
                 handleClickRoute={this.handleClickRoute}
                 {...this.props}

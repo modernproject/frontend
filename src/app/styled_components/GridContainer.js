@@ -5,7 +5,8 @@ const GridContainer = styled.div`
     display: grid;
     height: 100%;
     width: 100%;
-    grid-template-rows: 3rem auto;
+    grid-template-columns: auto 15rem;
+    grid-template-rows: 3rem 5rem auto;
 
     @media (max-width: 32rem) {
         grid-template-columns: auto;

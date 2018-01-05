@@ -19,6 +19,11 @@ import Global from './app/styled_components/Global'
 import { renderRoutes } from './app/routes/RenderRoutes'
 import { routes } from './app/routes/routes'
 
+import fontawesome from '@fortawesome/fontawesome'
+import solid from '@fortawesome/fontawesome-free-solid/'
+
+fontawesome.library.add(solid)
+
 const basename = process.env.NODE_ENV === 'production' ? '/' : '/'
 
 export const history = createHistory({
