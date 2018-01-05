@@ -4,7 +4,7 @@ import ArticleContainer from '../containers/ArticleContainer'
 import LoginContainer from '../containers/LoginContainer'
 import RegistrationContainer from '../containers/RegistrationContainer'
 import SettingsContainer from '../containers/SettingsContainer'
-import UserFormComponent from '../components/UserFormComponent'
+import UserFormContainer from '../containers/UserFormContainer'
 import EmailConfirmationContainer from '../containers/EmailConfirmationContainer'
 import PasswordResetContainer from '../containers/PasswordResetContainer'
 import PasswordUpdateContainer from '../containers/PasswordUpdateContainer'
@@ -46,19 +46,13 @@ export const routes = [
   {
     path: '/settings/user',
     exact: true,
-    Component: UserFormComponent,
+    Component: UserFormContainer,
     Layout: NavBarLayout
   },
   {
     path: '/settings/password',
     exact: true,
     Component: PasswordUpdateContainer,
-    Layout: NavBarLayout
-  },
-  {
-    path: '/settings/email_preferences',
-    exact: true,
-    Component: UserFormComponent,
     Layout: NavBarLayout
   },
   {

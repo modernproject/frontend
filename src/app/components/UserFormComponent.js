@@ -9,7 +9,11 @@ class UserFormComponent extends React.Component {
         action: userUpdateAction,
         button: { text: 'UPDATE' },
         description: '',
-        noDisplayFields: ['pk', 'email', 'username']
+        noDisplayFields: ['pk', 'email', 'username'],
+        values: {
+            first_name: this.props.user.first_name,
+            last_name: this.props.user.last_name
+        }
     }
 
     render() {
@@ -18,4 +22,3 @@ class UserFormComponent extends React.Component {
 }
 
 export default UserFormComponent
-

@@ -308,7 +308,7 @@ export function userClear() {
 
 export function userUpdateAction(data) {
   return (dispatch, getState) => {
-    dispatch(userRequest())
+    console.log(data)
     axios
       .patch(USER_URL, data)
       .then(response => {

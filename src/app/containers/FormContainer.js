@@ -24,12 +24,12 @@ class FormContainer extends React.Component {
 
   handleSubmit = event => {
     let values = {}
-    Object.keys(this.fields).map(field => {
-      values[field] = this.fields[field].value
-    })
     if (this.props.formBuilder.values) {
       values = Object.assign(values, this.props.formBuilder.values)
     }
+    Object.keys(this.fields).map(field => {
+      values[field] = this.fields[field].value
+    })
     this.props.dispatch(clearErrors()).then(() => {
       this.props.dispatch(this.props.formBuilder.action(values))
     })
@@ -37,6 +37,7 @@ class FormContainer extends React.Component {
 
   handleChange = (name, value) => {
     this.fields[name].value = value
+    console.log(value)
   }
 
   componentDidMount = () => {
@@ -56,8 +57,13 @@ class FormContainer extends React.Component {
     obtainOptions().then(options => {
       if (options !== undefined) {
         let fields = options.actions[this.props.formBuilder.method]
+
         Object.keys(fields).map(field => {
-          fields[field].value = ''
+          let value = ''
+          if (this.props.formBuilder.values) {
+            value = this.props.formBuilder.values[field]
+          }
+          fields[field].value = value
         })
 
         this.fields = fields
