@@ -8,7 +8,7 @@ export default class PasswordResetComponent extends React.Component {
         uri: 'password/reset/confirm',
         method: 'POST',
         action: passwordResetConfirmAction,
-        button: { text: 'CONFIRM' },
+        button: { text: 'Update' },
         description: '',
         values: {
             uid: this.props.uid,

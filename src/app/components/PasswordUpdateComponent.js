@@ -8,7 +8,7 @@ export default class PasswordUpdateComponent extends React.Component {
         uri: 'password/change/',
         method: 'POST',
         action: passwordUpdateAction,
-        button: { text: 'CONFIRM' },
+        button: { text: 'Update' },
         description: ''
     }
 
@@ -16,7 +16,7 @@ export default class PasswordUpdateComponent extends React.Component {
         uri: 'password/reset/',
         method: 'POST',
         action: passwordResetAction,
-        button: { text: 'RESET PASSWORD' },
+        button: { text: 'Reset Password' },
         name: '',
         description: '',
         values: {
@@ -28,7 +28,6 @@ export default class PasswordUpdateComponent extends React.Component {
     render() {
         return (
             <div>
-                <BackButtonContainer />
                 <FormContainer formBuilder={this.passwordUpdateformBuilder} />
                 <FormContainer formBuilder={this.passwordResetformBuilder} />
             </div>

@@ -9,6 +9,20 @@ const FieldSet = styled.fieldset`
     padding: 0;
     margin: 0;
 
+    div:first-child {
+        margin-left: -4rem;
+    }
+
+    @media (max-width: ${props => props.theme.mediaQueries.phone}) {
+        div:first-child {
+            margin-left: 0rem;
+        }
+    }
+
+    div > button:first-child {
+        margin-top: 0rem;
+    }
+
     button {
         margin-top: 1rem;
     }

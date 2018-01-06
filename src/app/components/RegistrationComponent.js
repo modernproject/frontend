@@ -7,8 +7,9 @@ class RegistrationComponent extends React.Component {
         uri: 'registration',
         method: 'POST',
         action: registrationAction,
-        button: { text: 'SIGN UP' },
-        name: 'SIGN UP'
+        button: { text: 'Sign Up' },
+        name: 'Sign Up',
+        noDisplayFields: ['username']
     }
 
     render() {

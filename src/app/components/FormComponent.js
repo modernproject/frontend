@@ -7,6 +7,8 @@ import Label from '../styled_components/Label'
 import Input from '../styled_components/Input'
 import FieldGroup from '../styled_components/FieldGroup'
 import InputError from '../styled_components/InputError'
+import Flex from '../styled_components/Flex'
+import BackButtonContainer from '../containers/BackButtonContainer'
 
 class FormComponent extends React.Component {
   static props = {
@@ -89,7 +91,12 @@ class FormComponent extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <FieldSet>
-          {this.props.name && <p>{this.props.name.toUpperCase()}</p>}
+          {this.props.name && (
+            <Flex>
+              <BackButtonContainer />
+              <h2>{this.props.name}</h2>
+            </Flex>
+          )}
           {this.props.description !== '' && <p>{this.props.description}</p>}
           {this.renderInputs()}
           <Button confirm="true">{this.props.formBuilder.button.text}</Button>

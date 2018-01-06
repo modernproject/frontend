@@ -8,7 +8,7 @@ class UserFormComponent extends React.Component {
         uri: 'user',
         method: 'PUT',
         action: userUpdateAction,
-        button: { text: 'UPDATE' },
+        button: { text: 'Update' },
         description: '',
         noDisplayFields: ['pk', 'email', 'username'],
         values: {
@@ -18,12 +18,7 @@ class UserFormComponent extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <BackButtonContainer />
-                <FormContainer formBuilder={this.formBuilder} />
-            </div>
-        )
+        return <FormContainer formBuilder={this.formBuilder} />
     }
 }
 

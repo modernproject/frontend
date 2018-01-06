@@ -7,7 +7,7 @@ class LoginComponent extends React.Component {
         uri: 'login',
         method: 'POST',
         action: loginAction,
-        button: { text: 'LOGIN' },
+        button: { text: 'Login' },
         description: '',
         noDisplayFields: ['username']
     }
