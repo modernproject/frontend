@@ -28,6 +28,10 @@ export const POSTS_REQUEST = 'POSTS_REQUEST'
 export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS'
 export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR'
 
+export const POSTS_OPTIONS_REQUEST = 'POSTS_OPTIONS_REQUEST'
+export const POSTS_OPTIONS_REQUEST_SUCCESS = 'POSTS_OPTIONS_REQUEST_SUCCESS'
+export const POSTS_OPTIONS_REQUEST_ERROR = 'POSTS_OPTIONS_REQUEST_ERROR'
+
 export const EMAIL_CONFIRMATION_REQUEST = 'EMAIL_CONFIRMATION_REQUEST'
 export const EMAIL_CONFIRMATION_REQUEST_SUCCESS =
   'EMAIL_CONFIRMATION_REQUEST_SUCCESS'
@@ -355,12 +359,40 @@ export function postsRequestError() {
   }
 }
 
+export function postsOptionsRequestSuccess(data) {
+  return {
+    type: POSTS_OPTIONS_REQUEST_SUCCESS,
+    data: data
+  }
+}
+
+export function postsOptionsRequest() {
+  return (dispatch, getState) => {
+    axios
+      .options(POSTS_URL)
+      .then(response => {
+        console.log(response)
+
+        dispatch(
+          postsOptionsRequestSuccess(
+            response.data.actions.POST.category.choices
+          )
+        )
+      })
+      .catch(error => {
+        dispatch(updateErrors(error.response.status, error.response.data))
+      })
+  }
+}
+
 export function postsRequest() {
   return (dispatch, getState) => {
     axios
       .get(POSTS_URL)
       .then(response => {
-        dispatch(postsRequestSuccess(response.data))
+        dispatch(postsOptionsRequest()).then(() => {
+          dispatch(postsRequestSuccess(response.data))
+        })
       })
       .catch(error => {
         dispatch(postsRequestError()).then(() => {

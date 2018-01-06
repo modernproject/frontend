@@ -5,29 +5,46 @@ import Button from '../styled_components/Button'
 export default class DashboardComponent extends React.Component {
     static props = {
         posts: PropTypes.object.isRequired,
+        categories: PropTypes.object.isRequired,
         handleClick: PropTypes.func.isRequired
     }
 
-    renderPostLinks = () => {
-        const { posts } = this.props
-        if (posts.length > 0) {
-            return posts.map(post => {
+    renderCategorySections = () => {
+        const { categories } = this.props
+        if (categories.length > 0) {
+            return categories.map(category => {
                 return (
-                    <Button
-                        onClick={() => {
-                            this.props.handleClick(post.slug)
-                        }}
-                        key={post}
-                        full="true"
-                    >
-                        {post.title}
-                    </Button>
+                    <div>
+                        <h2 key={category.value}>{category.display_name}</h2>
+                        {this.renderPostLinks(category.value)}
+                    </div>
                 )
             })
         }
     }
 
+    renderPostLinks = value => {
+        const { posts } = this.props
+        if (posts.length > 0) {
+            return posts.map(post => {
+                if (post.category === value) {
+                    return (
+                        <Button
+                            onClick={() => {
+                                this.props.handleClick(post.slug)
+                            }}
+                            key={post}
+                            full="true"
+                        >
+                            {post.title}
+                        </Button>
+                    )
+                }
+            })
+        }
+    }
+
     render() {
-        return <div>{this.renderPostLinks()}</div>
+        return this.renderCategorySections()
     }
 }

@@ -5,12 +5,14 @@ import errors from './errors'
 import user from './user'
 import global from './global'
 import posts from './posts'
+import categories from './categories'
 
 const rootReducer = combineReducers({
     global,
     errors,
     user,
     posts,
+    categories,
     router: routerReducer
 })
 

@@ -15,18 +15,23 @@ class DashboardContainer extends React.Component {
     }
 
     render() {
-        return (
-            <DashboardComponent
-                handleClick={this.handleClick}
-                {...this.props}
-            />
-        )
+        if (this.props.categories.length > 0 && this.props.posts.length > 0) {
+            return (
+                <DashboardComponent
+                    handleClick={this.handleClick}
+                    {...this.props}
+                />
+            )
+        } else {
+            return null
+        }
     }
 }
 
 function mapStateToProps(state, ownProps) {
+    const categories = state.categories
     const posts = state.posts
-    return { posts }
+    return { categories, posts }
 }
 
 export default connect(mapStateToProps)(DashboardContainer)
