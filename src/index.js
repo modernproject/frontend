@@ -21,8 +21,9 @@ import { routes } from './app/routes/routes'
 
 import fontawesome from '@fortawesome/fontawesome'
 import solid from '@fortawesome/fontawesome-free-solid/'
+import brands from '@fortawesome/fontawesome-free-brands'
 
-fontawesome.library.add(solid)
+fontawesome.library.add(solid, brands)
 
 const basename = process.env.NODE_ENV === 'production' ? '/' : '/'
 

@@ -9,7 +9,7 @@ class LogoButton extends React.Component {
         dispatch(push('/'))
     }
     render() {
-        return <Button onClick={this.handleClick}>Modern Project</Button>
+        return <Button onClick={this.handleClick}>ModernProject</Button>
     }
 }
 

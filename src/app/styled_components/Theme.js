@@ -10,7 +10,11 @@ const colors = {
   grey700: '#616161',
   grey800: '#424242',
   grey900: '#212121',
-  black: '#000000'
+  black: '#000000',
+  blue: '#1565C0',
+  green: '#388E3C',
+  amber: '#FFC107',
+  red: '#D50000'
 }
 
 const mediaQueries = {

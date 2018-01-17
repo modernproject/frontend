@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Button = styled.button`
     border-width: 0.1rem;
     border-radius: 0.25rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     border-style: solid;
     padding: 0.5rem;
@@ -15,21 +15,25 @@ const Button = styled.button`
     }
 
     ${props =>
+        props.color &&
+        `
+            color: ${props.theme.colors.white};
+            background-color: ${props.theme.colors[props.color]};
+        `};
+
+    ${props =>
         props.back &&
         `
             margin-right: 2rem;
-
-    @media (max-width: ${props => props.theme.mediaQueries.phone}) {
-            margin-right: 1rem;
-        
-    }
-
+            @media (max-width: ${props => props.theme.mediaQueries.phone}) {
+                margin-right: 1rem;
+            }
         `};
 
     ${props =>
         props.confirm &&
         `
-            background: blue;
+            background: ${props.theme.colors.blue};
             color: white;
             width: 100%;
         `};

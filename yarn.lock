@@ -55,6 +55,16 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-common-types@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.1.tgz#28c78607ffd2d246abfcc09bacd28490952280af"
+
+"@fortawesome/fontawesome-free-brands@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-brands/-/fontawesome-free-brands-5.0.4.tgz#764ceaefc44b5ec5ca5b549cfa51e8cc672f72b4"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.1"
+
 "@fortawesome/fontawesome-free-solid@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-solid/-/fontawesome-free-solid-5.0.2.tgz#090ce2c59dd5ec76983f3da8a43e1ab0321b42d5"
