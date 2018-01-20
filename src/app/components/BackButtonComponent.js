@@ -10,6 +10,7 @@ export default class BackButtonComponent extends React.Component {
                     this.props.handleClick()
                 }}
                 back="true"
+                type="button"
             >
                 <FontAwesomeIcon icon="chevron-left" />
             </Button>

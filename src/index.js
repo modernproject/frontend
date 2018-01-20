@@ -37,9 +37,7 @@ const loggerMiddleware = createLogger()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   rootReducer,
-  composeEnhancers(
-    applyMiddleware(historyMiddleware, loggerMiddleware, apiMiddleware, thunk)
-  )
+  composeEnhancers(applyMiddleware(historyMiddleware, apiMiddleware, thunk))
 )
 
 // Required by Axios
