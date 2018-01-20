@@ -1,1 +1,1 @@
-# MODERN PROJECT - FRONTEND
+# ModernProject - Frontend
