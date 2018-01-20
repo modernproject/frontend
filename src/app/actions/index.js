@@ -68,7 +68,7 @@ const PASSWORD_RESET_CONFIRM_URL = 'password/reset/confirm/'
 
 // URL CONSTANTS
 const BASE_URL =
-  process.env.NODE_ENV === 'production' ? '/' : 'http://localhost/'
+  process.env.NODE_ENV === 'production' ? '/' : 'http://api.localtest.me/'
 
 var axios = axiosBase.create({
   baseURL: BASE_URL
