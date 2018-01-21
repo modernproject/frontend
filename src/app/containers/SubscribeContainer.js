@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import SubscribeComponent from '../components/SubscribeComponent'
 
 class SubscribeContainer extends React.Component {
     render() {
-        return <h1> Subscribe </h1>
+        return <SubscribeComponent />
     }
 }
 

@@ -89,7 +89,7 @@ function globalErrorHandler(error, dispatch, location = '') {
       errorMessage === 'Signature has expired.' ||
       errorMessage === 'Authentication credentials were not provided.'
     ) {
-      if (location !== '/') {
+      if (location.includes('settings')) {
         dispatch(push('/login'))
       }
     } else {
