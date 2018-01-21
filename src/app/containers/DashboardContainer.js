@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { postsRequest } from '../actions'
+import { postListRequest } from '../actions'
 import { push } from 'react-router-redux'
 
 import DashboardComponent from '../components/DashboardComponent'
 
 class DashboardContainer extends React.Component {
     componentDidMount() {
-        this.props.dispatch(postsRequest())
+        this.props.dispatch(postListRequest())
     }
 
     handleClick = slug => {
@@ -15,7 +15,10 @@ class DashboardContainer extends React.Component {
     }
 
     render() {
-        if (this.props.categories.length > 0 && this.props.posts.length > 0) {
+        if (
+            this.props.categories.length > 0 &&
+            this.props.postList.length > 0
+        ) {
             return (
                 <DashboardComponent
                     handleClick={this.handleClick}
@@ -30,8 +33,8 @@ class DashboardContainer extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     const categories = state.categories
-    const posts = state.posts
-    return { categories, posts }
+    const postList = state.postList
+    return { categories, postList }
 }
 
 export default connect(mapStateToProps)(DashboardContainer)

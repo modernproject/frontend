@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import NavBar from '../styled_components/Navbar'
-import LoginButton from './LoginButton'
-import RegistrationButton from './RegistrationButton'
+import ButtonComponent from './ButtonComponent'
 import LogoButton from './LogoButton'
 import Button from '../styled_components/Button'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -17,6 +16,7 @@ class NavBarComponent extends React.Component {
         const { user, displayDropDown } = this.props
         return (
             <NavBar>
+                <ButtonComponent text={'Subscribe'} url={'/subscribe'} />
                 <LogoButton />
                 {Object.keys(user).length > 0 ? (
                     displayDropDown ? (
@@ -32,8 +32,8 @@ class NavBarComponent extends React.Component {
                     )
                 ) : (
                     <div>
-                        <RegistrationButton key={'registration'} />,
-                        <LoginButton key={'login'} />
+                        <ButtonComponent text={'Sign Up'} url={'/signup'} />
+                        <ButtonComponent text={'Login'} url={'/login'} />
                     </div>
                 )}
             </NavBar>

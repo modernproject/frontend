@@ -24,13 +24,19 @@ export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
 export const LOGOUT_REQUEST_SUCCESS = 'LOGOUT_REQUEST_SUCCESS'
 export const LOGOUT_REQUEST_ERROR = 'LOGOUT_REQUEST_ERROR'
 
-export const POSTS_REQUEST = 'POSTS_REQUEST'
-export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS'
-export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR'
+export const POST_REQUEST = 'POST_REQUEST'
+export const POST_REQUEST_SUCCESS = 'POST_REQUEST_SUCCESS'
+export const POST_REQUEST_ERROR = 'POST_REQUEST_ERROR'
+export const POST_CLEAR = 'POST_CLEAR'
 
-export const POSTS_OPTIONS_REQUEST = 'POSTS_OPTIONS_REQUEST'
-export const POSTS_OPTIONS_REQUEST_SUCCESS = 'POSTS_OPTIONS_REQUEST_SUCCESS'
-export const POSTS_OPTIONS_REQUEST_ERROR = 'POSTS_OPTIONS_REQUEST_ERROR'
+export const POST_LIST_REQUEST = 'POST_LIST_REQUEST'
+export const POST_LIST_REQUEST_SUCCESS = 'POST_LIST_REQUEST_SUCCESS'
+export const POST_LIST_REQUEST_ERROR = 'POST_LIST_REQUEST_ERROR'
+
+export const POST_LIST_OPTIONS_REQUEST = 'POST_LIST_OPTIONS_REQUEST'
+export const POST_LIST_OPTIONS_REQUEST_SUCCESS =
+  'POST_LIST_OPTIONS_REQUEST_SUCCESS'
+export const POST_LIST_OPTIONS_REQUEST_ERROR = 'POST_LIST_OPTIONS_REQUEST_ERROR'
 
 export const EMAIL_CONFIRMATION_REQUEST = 'EMAIL_CONFIRMATION_REQUEST'
 export const EMAIL_CONFIRMATION_REQUEST_SUCCESS =
@@ -83,7 +89,7 @@ function globalErrorHandler(error, dispatch, location = '') {
       errorMessage === 'Signature has expired.' ||
       errorMessage === 'Authentication credentials were not provided.'
     ) {
-      if (location !== 'dashboard') {
+      if (location !== '/') {
         dispatch(push('/login'))
       }
     } else {
@@ -313,7 +319,6 @@ export function userClear() {
 
 export function userUpdateAction(data) {
   return (dispatch, getState) => {
-    console.log(data)
     axios
       .patch(USER_URL, data)
       .then(response => {
@@ -346,35 +351,33 @@ export function getUserAction(location = '') {
   }
 }
 
-export function postsRequestSuccess(data) {
+export function postListRequestSuccess(data) {
   return {
-    type: POSTS_REQUEST_SUCCESS,
+    type: POST_LIST_REQUEST_SUCCESS,
     data: data
   }
 }
 
-export function postsRequestError() {
+export function postListRequestError() {
   return {
-    type: POSTS_REQUEST_ERROR
+    type: POST_LIST_REQUEST_ERROR
   }
 }
 
-export function postsOptionsRequestSuccess(data) {
+export function postListOptionsRequestSuccess(data) {
   return {
-    type: POSTS_OPTIONS_REQUEST_SUCCESS,
+    type: POST_LIST_OPTIONS_REQUEST_SUCCESS,
     data: data
   }
 }
 
-export function postsOptionsRequest() {
+export function postListOptionsRequest() {
   return (dispatch, getState) => {
     axios
       .options(POSTS_URL)
       .then(response => {
-        console.log(response)
-
         dispatch(
-          postsOptionsRequestSuccess(
+          postListOptionsRequestSuccess(
             response.data.actions.POST.category.choices
           )
         )
@@ -385,20 +388,54 @@ export function postsOptionsRequest() {
   }
 }
 
-export function postsRequest() {
+export function postListRequest() {
   return (dispatch, getState) => {
     axios
       .get(POSTS_URL)
       .then(response => {
-        dispatch(postsOptionsRequest()).then(() => {
-          dispatch(postsRequestSuccess(response.data))
+        dispatch(postListOptionsRequest()).then(() => {
+          dispatch(postListRequestSuccess(response.data))
         })
       })
       .catch(error => {
-        dispatch(postsRequestError()).then(() => {
+        dispatch(postListRequestError()).then(() => {
           dispatch(updateErrors(error.response.status, error.response.data))
         })
       })
+  }
+}
+
+export function postRequestSuccess(data) {
+  return {
+    type: POST_REQUEST_SUCCESS,
+    data: data
+  }
+}
+
+export function postRequestError() {
+  return {
+    type: POST_REQUEST_ERROR
+  }
+}
+
+export function postRequest(postUrl) {
+  return (dispatch, getState) => {
+    axios
+      .get(postUrl)
+      .then(response => {
+        dispatch(postRequestSuccess(response.data))
+      })
+      .catch(error => {
+        dispatch(postRequestError()).then(() => {
+          dispatch(updateErrors(error.response.status, error.response.data))
+        })
+      })
+  }
+}
+
+export function postClear() {
+  return {
+    type: POST_CLEAR
   }
 }
 

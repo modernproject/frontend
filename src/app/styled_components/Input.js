@@ -9,7 +9,7 @@ const Input = styled.input.attrs({
     padding: 0.5rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    background: ${props => props.theme.colors.grey50};
+    background: ${props => props.theme.colors.white};
     color: ${props => props.theme.colors.black};
     border-top: none;
     border-left: none;

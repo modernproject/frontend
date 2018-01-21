@@ -11,7 +11,7 @@ export const Global = injectGlobal`
     background-color: #fff;
     font-size: 1rem;
     font-weight: normal;
-    font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-family:'Roboto',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     letter-spacing: .00rem;
     padding: 0;
     margin: 0;

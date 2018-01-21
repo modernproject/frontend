@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ButtonComponent from './ButtonComponent'
 import Button from '../styled_components/Button'
 import Flex from '../styled_components/Flex'
-import RegistrationButton from './RegistrationButton'
 import ContentSection from '../styled_components/ContentSection'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
@@ -28,20 +28,19 @@ export default class DashboardComponent extends React.Component {
     }
 
     renderPostLinks = value => {
-        const { posts } = this.props
-        if (posts.length > 0) {
-            return posts.map(post => {
+        const { postList } = this.props
+        if (postList.length > 0) {
+            return postList.map(post => {
                 if (post.category === value) {
                     return (
-                        <Button
+                        <ButtonComponent
                             onClick={() => {
                                 this.props.handleClick(post.slug)
                             }}
                             key={post}
                             full="true"
-                        >
-                            {post.title}
-                        </Button>
+                            text={post.title}
+                        />
                     )
                 }
             })
@@ -58,7 +57,7 @@ export default class DashboardComponent extends React.Component {
                                 Sign up to recieve updates on new tutorials and
                                 exclusive content
                             </p>
-                            <RegistrationButton color="green" />
+                            <ButtonComponent text={'Sign Up'} url={'/signup'} />
                         </Flex>
 
                         <h2>

@@ -1,5 +1,6 @@
 import DashboardContainer from '../containers/DashboardContainer'
 import AboutContainer from '../containers/AboutContainer'
+import SubscribeContainer from '../containers/SubscribeContainer'
 import ArticleContainer from '../containers/ArticleContainer'
 import LoginContainer from '../containers/LoginContainer'
 import RegistrationContainer from '../containers/RegistrationContainer'
@@ -20,9 +21,15 @@ export const routes = [
     Layout: NavBarLayout
   },
   {
-    path: '/about',
+    path: '/help',
     exact: true,
     Component: AboutContainer,
+    Layout: NavBarLayout
+  },
+  {
+    path: '/subscribe',
+    exact: true,
+    Component: SubscribeContainer,
     Layout: NavBarLayout
   },
   {

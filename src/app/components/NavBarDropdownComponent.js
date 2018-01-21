@@ -1,7 +1,6 @@
 import React from 'react'
-import Button from '../styled_components/Button'
+import ButtonComponent from './ButtonComponent'
 import NavBarDropdownContent from '../styled_components/NavBarDropdownContent'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import onClickOutside from 'react-onclickoutside'
 
 class NavBarDropdownComponent extends React.Component {
@@ -13,24 +12,42 @@ class NavBarDropdownComponent extends React.Component {
         return (
             this.props.displayDropDown && (
                 <NavBarDropdownContent>
-                    <Button
+                    <ButtonComponent
+                        onClick={() => {
+                            this.props.handleClickRoute('/subscribe')
+                        }}
                         full="true"
+                        icon="true"
+                        iconName="unlock-alt"
+                        text={'Subscribe'}
+                    />
+                    <ButtonComponent
                         onClick={() => {
                             this.props.handleClickRoute('/settings/')
                         }}
+                        full="true"
                         icon="true"
-                    >
-                        <FontAwesomeIcon icon="cog" />
-                        Settings
-                    </Button>
-                    <Button
+                        iconName="cog"
+                        text={'Settings'}
+                    />
+                    <ButtonComponent
+                        full="true"
+                        onClick={() => {
+                            this.props.handleClickRoute('/help')
+                        }}
+                        full="true"
+                        icon="true"
+                        iconName="question"
+                        text={'Help'}
+                    />
+                    <ButtonComponent
                         full="true"
                         onClick={this.props.handleOnClickSignOut}
+                        full="true"
                         icon="true"
-                    >
-                        <FontAwesomeIcon icon="sign-out-alt" />
-                        Sign Out
-                    </Button>
+                        iconName="sign-out-alt"
+                        text={'Sign Out'}
+                    />
                 </NavBarDropdownContent>
             )
         )
