@@ -1,10 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import SubscribeComponent from '../components/SubscribeComponent'
+import PaymentContainer from './PaymentContainer'
 
 class SubscribeContainer extends React.Component {
     render() {
-        return <SubscribeComponent />
+        return (
+            <React.Fragment>
+                <SubscribeComponent />
+                <PaymentContainer />
+            </React.Fragment>
+        )
     }
 }
 
