@@ -5,15 +5,13 @@ import ArticleComponent from '../components/ArticleComponent'
 
 class ArticleContainer extends React.Component {
     state = {
-        loading: false
+        loading: true
     }
 
     componentDidMount() {
-        this.props.dispatch(postClear()).then(() => {
-            this.props.dispatch(postRequest(this.props.postUrl)).then(() => {
-                this.setState({ loading: true })
-            })
-        })
+        this.props.dispatch(postClear())
+        this.props.dispatch(postRequest(this.props.postUrl))
+        this.setState({ loading: false })
     }
 
     render() {
@@ -23,9 +21,12 @@ class ArticleContainer extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     const articleSlug = ownProps.match.params.articleSlug
-    const postUrl = state.postList.filter(post => {
-        return post.slug == articleSlug && post
-    })[0].url
+    let postUrl = ''
+    if (state.postList.length > 0) {
+        postUrl = state.postList.filter(post => {
+            return post.slug == articleSlug && post
+        })[0].url
+    }
     return { postUrl }
 }
 

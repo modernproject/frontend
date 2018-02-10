@@ -15,7 +15,7 @@ class ArticleComponent extends React.Component {
         const { post } = this.props
         return (
             Object.keys(post).length !== 0 &&
-            this.props.loading && (
+            this.props.loading === false && (
                 <Article>
                     <Flex>
                         <BackButtonContainer />

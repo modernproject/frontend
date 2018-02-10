@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import GridContainer from '../styled_components/GridContainer'
 import NavBarContainer from '../containers/NavBarContainer'
 import MainContainer from '../styled_components/MainContainer'
-import { getUserAction } from '../actions'
+import { getUserAction, postListRequest } from '../actions'
 import NavBarDropdownContainer from '../containers/NavBarDropdownContainer'
 
 class NavBarLayout extends React.Component {
@@ -15,21 +15,25 @@ class NavBarLayout extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getUserAction(this.props.location.pathname))
+    if (this.props.postList.length === 0) {
+      this.props.dispatch(postListRequest())
+    }
   }
 
   render() {
-    const { children } = this.props
+    const { children, postList } = this.props
     return (
       <GridContainer>
         <NavBarContainer />
         <NavBarDropdownContainer />
-        <MainContainer full>{children}</MainContainer>
+        {postList.length > 0 && <MainContainer full>{children}</MainContainer>}
       </GridContainer>
     )
   }
 }
 
 function mapStateToProps(state, ownProps) {
-  return {}
+  const postList = state.postList
+  return { postList }
 }
 export default connect(mapStateToProps)(NavBarLayout)

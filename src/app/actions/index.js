@@ -421,7 +421,7 @@ export function postRequestError() {
 }
 
 export function postRequest(postUrl) {
-  return (dispatch, getState) => {
+  return dispatch => {
     axios
       .get(postUrl)
       .then(response => {

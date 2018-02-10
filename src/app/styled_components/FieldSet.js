@@ -2,22 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const FieldSet = styled.fieldset`
+    align-items: center;
     display: flex;
     flex-direction: column;
-
     border: none;
     padding: 0;
     margin: 0;
-
-    div:first-child {
-        margin-left: -4rem;
-    }
-
-    @media (max-width: ${props => props.theme.mediaQueries.phone}) {
-        div:first-child {
-            margin-left: 0rem;
-        }
-    }
 
     div > button:first-child {
         margin-top: 0rem;
@@ -34,3 +24,13 @@ const FieldSet = styled.fieldset`
     }
 `
 export default FieldSet
+
+// div:first-child {
+//     margin-left: -4rem;
+// }
+
+// @media (max-width: ${props => props.theme.mediaQueries.phone}) {
+//     div:first-child {
+//         margin-left: 0rem;
+//     }
+// }

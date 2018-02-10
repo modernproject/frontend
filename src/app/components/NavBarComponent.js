@@ -32,8 +32,17 @@ class NavBarComponent extends React.Component {
                     )
                 ) : (
                     <div>
-                        <ButtonComponent text={'Sign Up'} url={'/signup'} />
-                        <ButtonComponent text={'Login'} url={'/login'} />
+                        <ButtonComponent
+                            outline="true"
+                            color="green"
+                            text={'Sign Up'}
+                            url={'/signup'}
+                        />
+                        <ButtonComponent
+                            color="green"
+                            text={'Login'}
+                            url={'/login'}
+                        />
                     </div>
                 )}
             </NavBar>

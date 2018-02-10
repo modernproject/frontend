@@ -6,10 +6,6 @@ import { push } from 'react-router-redux'
 import DashboardComponent from '../components/DashboardComponent'
 
 class DashboardContainer extends React.Component {
-    componentDidMount() {
-        this.props.dispatch(postListRequest())
-    }
-
     handleClick = slug => {
         this.props.dispatch(push('article/' + slug))
     }

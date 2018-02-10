@@ -90,16 +90,18 @@ class FormComponent extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {this.props.name && (
+          <Flex>
+            <BackButtonContainer />
+            <h2>{this.props.name}</h2>
+          </Flex>
+        )}
         <FieldSet>
-          {this.props.name && (
-            <Flex>
-              <BackButtonContainer />
-              <h2>{this.props.name}</h2>
-            </Flex>
-          )}
           {this.props.description !== '' && <p>{this.props.description}</p>}
           {this.renderInputs()}
-          <Button confirm="true">{this.props.formBuilder.button.text}</Button>
+          <Button confirm="true" form="true">
+            {this.props.formBuilder.button.text}
+          </Button>
           {this.renderNonFieldErrors()}
         </FieldSet>
       </form>
