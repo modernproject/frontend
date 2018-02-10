@@ -334,20 +334,21 @@ export function userUpdateAction(data) {
 
 export function getUserAction(location = '') {
   return (dispatch, getState) => {
-    dispatch(verifyJWT(location)).then(verfied => {
-      if (verfied && Object.keys(getState().user).length === 0) {
-        dispatch(userRequest())
-        axios
-          .get(USER_URL)
-          .then(response => {
-            dispatch(userRequestSuccess(response.data))
-          })
-          .catch(error => {
-            dispatch(userRequestError())
-            console.log(error)
-          })
-      }
-    })
+    verify =>
+      dispatch(verifyJWT(location)).then(verfied => {
+        if (verfied && Object.keys(getState().user).length === 0) {
+          dispatch(userRequest())
+          axios
+            .get(USER_URL)
+            .then(response => {
+              dispatch(userRequestSuccess(response.data))
+            })
+            .catch(error => {
+              dispatch(userRequestError())
+              console.log(error)
+            })
+        }
+      })
   }
 }
 
@@ -389,18 +390,19 @@ export function postListOptionsRequest() {
 }
 
 export function postListRequest() {
-  return (dispatch, getState) => {
+  return dispatch => {
     axios
       .get(POSTS_URL)
       .then(response => {
-        dispatch(postListOptionsRequest()).then(() => {
-          dispatch(postListRequestSuccess(response.data))
-        })
+        dispatch(postListRequestSuccess(response.data))
+        dispatch(postListOptionsRequest())
       })
       .catch(error => {
-        dispatch(postListRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        state =>
+          dispatch(postListRequestError()).then(() => {
+            errors =>
+              dispatch(updateErrors(error.response.status, error.response.data))
+          })
       })
   }
 }
