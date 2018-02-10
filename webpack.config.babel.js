@@ -26,7 +26,7 @@ const productionPlugin = new webpack.DefinePlugin({
 })
 
 const base = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
     filename: 'modernproject-bundle.js',
     path: PATHS.dist,
