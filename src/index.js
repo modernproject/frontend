@@ -32,6 +32,7 @@ export const history = createHistory({
 })
 
 const historyMiddleware = routerMiddleware(history)
+const loggerMiddleware = createLogger()
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
