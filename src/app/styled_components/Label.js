@@ -8,5 +8,6 @@ const Label = styled.label`
     font-size: 1rem;
     color: ${props => props.theme.colors.grey800};
     width: 100%;
+    text-transform: capitalize;
 `
 export default Label

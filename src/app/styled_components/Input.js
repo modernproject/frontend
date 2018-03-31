@@ -20,6 +20,7 @@ const Input = styled.input.attrs({
     ::placeholder {
         color: ${props => props.color};
         font-size: 1rem;
+        text-transform: capitalize;
     }
 `
 export default Input
