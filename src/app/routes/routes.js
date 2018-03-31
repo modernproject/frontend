@@ -48,19 +48,22 @@ export const routes = [
     path: '/settings/',
     exact: true,
     Component: SettingsContainer,
-    Layout: NavBarLayout
+    Layout: NavBarLayout,
+    authenticated: true
   },
   {
     path: '/settings/user',
     exact: true,
     Component: UserFormContainer,
-    Layout: NavBarLayout
+    Layout: NavBarLayout,
+    authenticated: true
   },
   {
     path: '/settings/password',
     exact: true,
     Component: PasswordUpdateContainer,
-    Layout: NavBarLayout
+    Layout: NavBarLayout,
+    authenticated: true
   },
   {
     path: '/article/:articleSlug',
