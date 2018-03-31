@@ -21,7 +21,10 @@ class NavBarDropdownContainer extends React.Component {
     }
 
     handleClickOutside = event => {
-        this.props.dispatch(updateDropDown())
+        console.log(event)
+        if (this.props.displayDropDown == true && event.target.id !== "userIcon") {
+            this.props.dispatch(updateDropDown())    
+        }
     }
 
     render() {

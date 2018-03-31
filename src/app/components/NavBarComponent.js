@@ -13,23 +13,15 @@ class NavBarComponent extends React.Component {
     }
 
     render() {
-        const { user, displayDropDown } = this.props
+        const { user, displayDropDown, handleOnClick } = this.props
         return (
             <NavBar>
-                <ButtonComponent text={'Subscribe'} url={'/subscribe'} />
                 <LogoButton />
                 {Object.keys(user).length > 0 ? (
-                    displayDropDown ? (
-                        <Button icon="true" onClick={this.props.handleOnClick}>
-                            <FontAwesomeIcon icon="user-circle" />
-                            <FontAwesomeIcon icon="chevron-up" />
-                        </Button>
-                    ) : (
-                        <Button icon="true" onClick={this.props.handleOnClick}>
-                            <FontAwesomeIcon icon="user-circle" />
-                            <FontAwesomeIcon icon="chevron-down" />
-                        </Button>
-                    )
+                    <Button id="userIcon" icon="true" onClick={handleOnClick}>
+                        <FontAwesomeIcon icon="user-circle" />
+                        <FontAwesomeIcon icon={displayDropDown ? "chevron-up" : "chevron-down"} />
+                    </Button>
                 ) : (
                     <div>
                         <ButtonComponent
