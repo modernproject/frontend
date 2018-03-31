@@ -109,11 +109,9 @@ function removeJWTCookie(token) {
 }
 
 function addJWTToAxios() {
-  return (dispatch, getState) => {
-    const token = Cookies.get('token')
-    if (token !== '') {
-      axios.defaults.headers.common['Authorization'] = `JWT ${token}`
-    }
+  const token = Cookies.get('token')
+  if (token !== '') {
+    axios.defaults.headers.common['Authorization'] = `JWT ${token}`
   }
 }
 
@@ -130,8 +128,7 @@ export function verifyJWT(location = '') {
       return axios
         .post(VERIFY_JWT_URL, data)
         .then(response => {
-          dispatch(addJWTToAxios())
-          return true
+          addJWTToAxios()
         })
         .catch(error => {
           globalErrorHandler(error, dispatch, location)
@@ -186,8 +183,8 @@ export function loginRequest() {
   }
 }
 
-export function loginRequestSuccess(data) {
-  setJWTCookie(data.token)
+export function loginRequestSuccess(token) {
+  setJWTCookie(token)
   addJWTToAxios()
   return {
     type: LOGIN_REQUEST_SUCCESS
@@ -206,7 +203,7 @@ export function loginAction(data) {
     axios
       .post(LOGIN_URL, data)
       .then(response => {
-        dispatch(loginRequestSuccess(response.data))
+        dispatch(loginRequestSuccess(response.data.token))
         dispatch(userRequestSuccess(response.data.user))
         dispatch(push('/'))
       })

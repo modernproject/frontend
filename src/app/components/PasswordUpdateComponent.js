@@ -9,7 +9,8 @@ export default class PasswordUpdateComponent extends React.Component {
         method: 'POST',
         action: passwordUpdateAction,
         button: { text: 'Update' },
-        description: ''
+        description: '',
+        displayNames: {'new_password1': 'Password', 'new_password2': 'Confirm Password'}
     }
 
     passwordResetformBuilder = {
@@ -22,7 +23,7 @@ export default class PasswordUpdateComponent extends React.Component {
         values: {
             email: this.props.email
         },
-        noDisplayFields: ['email']
+        noDisplayFields: ['email'],
     }
 
     render() {

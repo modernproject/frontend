@@ -58,7 +58,6 @@ class FormComponent extends React.Component {
           ? 'password'
           : fields[input].type
         const fieldErrorsPresent = errorKeys.indexOf(input) !== -1
-        console.log(fields[input].label)
         return (
           <FieldGroup key={input}>
             {(this.state.focused === input || fields[input].value !== '') && (
