@@ -12,7 +12,6 @@ import BackButtonContainer from '../containers/BackButtonContainer'
 
 class FormComponent extends React.Component {
   static props = {
-    dispatch: PropTypes.func.isRequired,
     builtInputs: PropTypes.object.isRequired,
     inputErrors: PropTypes.object.isRequired
   }
@@ -59,6 +58,7 @@ class FormComponent extends React.Component {
           ? 'password'
           : fields[input].type
         const fieldErrorsPresent = errorKeys.indexOf(input) !== -1
+        console.log(fields[input].label)
         return (
           <FieldGroup key={input}>
             {(this.state.focused === input || fields[input].value !== '') && (
@@ -99,7 +99,7 @@ class FormComponent extends React.Component {
         <FieldSet>
           {this.props.description !== '' && <p>{this.props.description}</p>}
           {this.renderInputs()}
-          <Button confirm="true" form="true">
+          <Button confirm="true" type="submit">
             {this.props.formBuilder.button.text}
           </Button>
           {this.renderNonFieldErrors()}

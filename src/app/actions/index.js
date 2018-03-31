@@ -206,16 +206,20 @@ export function loginAction(data) {
     axios
       .post(LOGIN_URL, data)
       .then(response => {
-        dispatch(loginRequestSuccess(response.data)).then(() => {
-          dispatch(userRequestSuccess(response.data.user)).then(() => {
-            dispatch(push('/'))
-          })
-        })
+        dispatch(loginRequestSuccess(response.data))
+        dispatch(userRequestSuccess(response.data.user))
+        dispatch(push('/'))
       })
       .catch(error => {
-        dispatch(loginRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        if (error.response) {
+          console.log(error.response)
+        } else if (error.request) {
+          console.log(error.request)
+        } else {
+          console.log('Error', error.message)
+        }
+        dispatch(loginRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }
@@ -241,14 +245,12 @@ export function logoutAction() {
         removeJWTCookie()
         removeJWTFromAxios()
         dispatch(updateDropDown())
-        dispatch(userClear()).then(() => {
-          dispatch(push('/'))
-        })
+        dispatch(userClear())
+        dispatch(push('/'))
       })
       .catch(error => {
-        dispatch(logoutRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        dispatch(logoutRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }
@@ -277,13 +279,10 @@ export function registrationAction(data) {
     axios
       .post(REGISTRATION_URL, data)
       .then(response => {
-        dispatch(registrationRequestSuccess()).then(() => {
-          dispatch(loginRequestSuccess(response.data)).then(() => {
-            dispatch(userRequestSuccess(response.data.user)).then(() => {
-              dispatch(push('/'))
-            })
-          })
-        })
+        dispatch(registrationRequestSuccess())
+        dispatch(loginRequestSuccess(response.data))
+        dispatch(userRequestSuccess(response.data.user))
+        dispatch(push('/'))
       })
       .catch(error => {
         dispatch(registrationRequestError())
@@ -325,9 +324,8 @@ export function userUpdateAction(data) {
         dispatch(userRequestSuccess(response.data))
       })
       .catch(error => {
-        dispatch(userRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        dispatch(userRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }
@@ -428,9 +426,8 @@ export function postRequest(postUrl) {
         dispatch(postRequestSuccess(response.data))
       })
       .catch(error => {
-        dispatch(postRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        dispatch(postRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }
@@ -471,9 +468,8 @@ export function emailConfirmationAction(key) {
         dispatch(emailConfirmationRequestSuccess())
       })
       .catch(error => {
-        dispatch(emailConfirmationRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        dispatch(emailConfirmationRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }
@@ -505,9 +501,8 @@ export function passwordUpdateAction(data) {
         dispatch(passwordUpdateRequestSuccess())
       })
       .catch(error => {
-        dispatch(passwordUpdateRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        dispatch(passwordUpdateRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }
@@ -536,14 +531,12 @@ export function passwordResetAction(data) {
     axios
       .post(PASSWORD_RESET_URL, data)
       .then(response => {
-        dispatch(passwordResetRequestSuccess()).then(() => {
-          dispatch(logoutAction())
-        })
+        dispatch(passwordResetRequestSuccess())
+        dispatch(logoutAction())
       })
       .catch(error => {
-        dispatch(passwordResetRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        dispatch(passwordResetRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }
@@ -575,9 +568,8 @@ export function passwordResetConfirmAction(data) {
         dispatch(passwordResetRequestConfirmSuccess())
       })
       .catch(error => {
-        dispatch(passwordResetConfirmRequestError()).then(() => {
-          dispatch(updateErrors(error.response.status, error.response.data))
-        })
+        dispatch(passwordResetConfirmRequestError())
+        dispatch(updateErrors(error.response.status, error.response.data))
       })
   }
 }

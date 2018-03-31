@@ -9,7 +9,8 @@ class RegistrationComponent extends React.Component {
         action: registrationAction,
         button: { text: 'Sign Up' },
         name: 'Sign Up',
-        noDisplayFields: ['username']
+        noDisplayFields: ['username'],
+        displayNames: {'password1': 'Password', 'password2': 'Confirm Password'}
     }
 
     render() {
