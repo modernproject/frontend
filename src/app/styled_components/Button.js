@@ -46,14 +46,20 @@ const Button = styled.button`
         `};
 
     ${props =>
-        props.back &&
+        props.back === 'true' &&
         `
             margin-left: 0;
             margin-right: 2rem;
-            @media (max-width: ${props => props.theme.mediaQueries.phone}) {
-                margin-right: 1rem;
-            }
+
         `};
+
+    @media (max-width: ${props => props.theme.mediaQueries.phone}) {
+        ${props =>
+            props.back === 'true' &&
+            `
+                margin-right: 0;
+            `};
+    }
 
     ${props =>
         props.confirm &&

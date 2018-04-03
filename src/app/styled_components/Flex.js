@@ -41,5 +41,11 @@ const Flex = styled.div`
         `
         flex-direction: ${props.direction}
     `};
+
+    ${props =>
+        props.align &&
+        `
+        align-items: ${props.align}
+    `};
 `
 export default Flex
